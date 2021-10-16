@@ -1,0 +1,16 @@
+{
+  "name": "curso_asincronismo_javascript",
+  "version": "1.0.0",
+  "description": "trabajar con asincronismo en javaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "callback" : "node src/callback/index.js"
+  },
+  "keywords": [
+    "callbacks",
+    "promesas",
+    "async"
+  ],
+  "author": "Adrian",
+  "license": "ISC"
+}
