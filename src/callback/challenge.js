@@ -71,17 +71,34 @@ function fetchData(url_api, callback) {
     xhttp.send();
 }
 //Nuestro callback que se va a ejecutare/
-/**segundo valor que recibe es el callback */
+/**primer valor es la url de la api,
+ * segundo valor que recibe es el callback funcion que recibe
+ * como primer parametro un error y como segundo el data1, porque
+ * usaremos esta funcion varias veces de forma anidada*/
 fetchData(API, function(error1,data1){
-    //al primer error un console error
+    //una validacion para que no haya errores en el data1
     if(error1) return console.error(error1)
+    /**si funciona usamos a fetch data pero le pasamos el resultado 
+     * del primer personaje y como segundo valor pasamos una funcion  */
     fetchData(API + data1.results[0].id,function(error2,data2){
+        //validacion si hay un error
         if(error2) return console.error(error2)
+        //la tercer peticion con data3
         fetchData(data2.origin.url, function (error3, data3){
+            //manejammos errores
             if(error3) return console.error(error3)
+            //imprimimos la informacion en la consola
             console.log(data1.info.count)
             console.log(data2.name)
             console.log(data3.dimension)
         })
     })
 })
+
+
+/**PREGUNTA DE EXAMEN:
+Es recomendable de no realizar mas de 3 callback
+ para no caer en un callback Hell, si tu proyecto 
+ tiene una funcion con mas de 3 callback, se recomienda 
+ hacer una revision y utilizar una mejor forma de ejecutar el codigo,
+ para ello estan las promesas o el Async Away */
